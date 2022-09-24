@@ -44,7 +44,7 @@ var loadTasks = function () {
   tasks = JSON.parse(localStorage.getItem("tasks"));
 
   // if nothing in localStorage, create a new object to track all task status arrays
-  if (!tasks) {
+  if (!tasks || typeof tasks !== 'object') {
     tasks = {
       toDo: [],
       inProgress: [],
@@ -275,7 +275,7 @@ $("#modalDueDate").datepicker({
 
 // Lesson 5 - Touch ups
 setInterval(function () {
-  $(".card .list-group-item").each(function(index, el) {
+  $(".card .list-group-item").each(function (index, el) {
     auditTask(el);
   });
 }, (1000 * 60) * 30);
